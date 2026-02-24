@@ -9,7 +9,7 @@ include(cmake/imgui.cmake)
 include(cmake/json.cmake)
 include(cmake/minhook.cmake)
 include(cmake/rdr-classes.cmake)
-
+include(cmake/luajit.cmake)
 
 # source
 set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
@@ -32,10 +32,12 @@ target_include_directories(${PROJECT_NAME} PRIVATE
     "${minhook_SOURCE_DIR}/src/hde"    
     "${RDR-Classes_SOURCE_DIR}"
     "${vulkan_SOURCE_DIR}/include"
+    "${luajit_SOURCE_DIR}/src"
+    "${luajit_BINARY_DIR}/src"
 )
 
 message(STATUS "Setting up linked libraries")
-target_link_libraries(${PROJECT_NAME} PRIVATE AsyncLogger imgui minhook nlohmann_json::nlohmann_json dbghelp RDR-Classes "${DEPS_DIR}/vulkan-1.lib")
+target_link_libraries(${PROJECT_NAME} PRIVATE AsyncLogger imgui minhook nlohmann_json::nlohmann_json dbghelp RDR-Classes "${DEPS_DIR}/vulkan-1.lib" libluajit)
 
 add_compile_definitions("_CRT_SECURE_NO_WARNINGS" "NOMINMAX" "WIN32_LEAN_AND_MEAN")
 

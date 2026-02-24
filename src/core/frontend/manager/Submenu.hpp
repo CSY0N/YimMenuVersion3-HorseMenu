@@ -28,6 +28,6 @@ namespace YimMenu
 	public:
 		std::vector<std::shared_ptr<Category>> m_Categories;
 		std::string m_Name;
-		std::string m_Icon; // currently unused
+		std::string m_Icon;
 	};
 }

@@ -6,6 +6,7 @@
 #include "core/memory/ModuleMgr.hpp"
 #include "game/backend/PlayerDatabase.hpp"
 #include "core/renderer/Renderer.hpp"
+#include "core/scripting/LuaManager.hpp"
 #include "core/settings/Settings.hpp"
 #include "game/backend/FiberPool.hpp"
 #include "game/backend/MapEditor/MapEditor.hpp"
@@ -57,6 +58,7 @@ namespace YimMenu
 		ScriptMgr::AddScript(std::make_unique<Script>(&FeatureLoop));
 		ScriptMgr::AddScript(std::make_unique<Script>(&BlockControlsForUI));
 		ScriptMgr::AddScript(std::make_unique<Script>(&ContextMenuTick));
+		ScriptMgr::AddScript(std::make_unique<Script>(&LuaManager::RunScript));
 		ScriptMgr::AddScript(std::make_unique<Script>(&MapEditor::Update));
 
 		Notifications::Show("Terminus", "Loaded succesfully", NotificationType::Success);

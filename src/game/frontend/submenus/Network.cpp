@@ -1,4 +1,4 @@
-﻿#include <imgui.h>
+#include <imgui.h>
 #include "Network.hpp"
 
 #include "Network/Voice.hpp"
@@ -87,9 +87,9 @@ namespace YimMenu::Submenus
 			ImGui::PopID();
 		}
 	}
-
-	Network::Network() :
-	    Submenu::Submenu("Network")
+		Network::Network() :
+		#define ICON_FA_USER "\xef\x80\x87"
+	    Submenu::Submenu("Self", ICON_FA_USER)
 	{
 		// TODO: this needs a rework
 		auto session = std::make_shared<Category>("Session");

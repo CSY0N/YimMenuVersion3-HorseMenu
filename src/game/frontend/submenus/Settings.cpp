@@ -7,6 +7,8 @@
 #include "game/features/Features.hpp"
 #include "game/frontend/items/Items.hpp"
 #include "game/frontend/ColorCustomization.hpp"
+#include "game/frontend/submenus/Settings/LuaScripts.hpp"
+
 
 namespace YimMenu::Submenus
 {
@@ -34,7 +36,8 @@ namespace YimMenu::Submenus
 	};
 
 	Settings::Settings() :
-	    Submenu::Submenu("Settings")
+			#define ICON_FA_GEARS "\xef\x80\x93"
+	    Submenu::Submenu("Settings", ICON_FA_GEARS)
 	{
 		auto hotkeys           = std::make_shared<Category>("Hotkeys");
 		auto gui               = std::make_shared<Category>("GUI");
@@ -131,6 +134,7 @@ namespace YimMenu::Submenus
 		AddCategory(std::move(hotkeys));
 		AddCategory(std::move(gui));
 		AddCategory(std::move(protections));
+		AddCategory(BuildLuaScriptsMenu());
 		AddCategory(std::move(menuCustomization));
 	}
 }

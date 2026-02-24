@@ -48,6 +48,13 @@ namespace YimMenu
 				Pointers.FixVectors(&m_CallContext);
 		}
 
+		constexpr void EndCall(int index, bool fix_vectors)
+		{
+			m_Handlers[index](&m_CallContext);
+			if (fix_vectors)
+				Pointers.FixVectors(&m_CallContext);
+		}
+
 		template<typename T>
 		constexpr void PushArg(T&& value)
 		{
