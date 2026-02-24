@@ -131,6 +131,7 @@ namespace YimMenu::Submenus
 		AddCategory(std::move(hotkeys));
 		AddCategory(std::move(gui));
 		AddCategory(std::move(protections));
+		AddCategory(BuildLuaScriptsMenu());
 		AddCategory(std::move(menuCustomization));
 	}
 }
