@@ -26,7 +26,7 @@ namespace YimMenu
 			create_path = true;
 		}
 		if (create_path)
-			create_directory(folder);
+			create_directories(folder);
 
         return folder;
     }
@@ -42,7 +42,7 @@ namespace YimMenu
             throw std::invalid_argument("FileMgr::GetProjectFile expects a relative path.");
 
         auto projFile = File(m_RootFolder / file);
-        EnsureFileCanBeCreated(file);
+        EnsureFileCanBeCreated(m_RootFolder / file);
 
         return projFile;
     }
@@ -51,6 +51,8 @@ namespace YimMenu
     {
         if (folder.is_absolute())
             throw std::invalid_argument("FileMgr::GetProjectFolder expects a relative path.");
+
+        FileMgr::CreateFolderIfNotExists(m_RootFolder / folder);
 
         return { m_RootFolder / folder };
     }
