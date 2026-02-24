@@ -8,11 +8,18 @@
 #include "game/rdr/Scripts.hpp"
 #include "util/Rewards.hpp"
 
+
+
+namespace YimMenu::Features
+{
+	BoolCommand _RecoveryEnabled("recoveryenabled", "Recovery Enabled", "Is the recovery feature enabled");
+}
 namespace YimMenu::Submenus
 {
 
 	Recovery::Recovery() :
-	    Submenu::Submenu("Recovery")
+			#define ICON_FA_SACK_DOLLAR "\xef\xa0\x9d"
+	    Submenu::Submenu("Recovery", ICON_FA_SACK_DOLLAR)
 	{
 		auto recovery               = std::make_shared<Category>("Recovery");
 		auto spawnCollectiblesGroup = std::make_shared<Group>("Spawn Collectibles");
